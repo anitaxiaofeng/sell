@@ -1,6 +1,9 @@
 package com.imooc.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.imooc.dataobject.OrderDetail;
+import com.imooc.utils.serializer.Date2LongSerializer;
 import lombok.Data;
 
 
@@ -9,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 @Data
+//@JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderDTO {
 
     private String orderId;
@@ -16,6 +20,7 @@ public class OrderDTO {
     private String buyerName;
 
     private String buyerPhone;
+    //private String buyerPhone = "";返回时可以返回空字符
 
     private String buyerAddress;
 
@@ -27,11 +32,15 @@ public class OrderDTO {
 
     private Integer payStatus ;
 
+    @JsonSerialize(using = Date2LongSerializer.class)
     private Date createTime;
 
+    @JsonSerialize(using = Date2LongSerializer.class)
     private Date updateTime;
 
     List<OrderDetail> orderDetailList;
+
+    //List<OrderDetail> orderDetailList = new ArrayList<>(); 可以返回空数组
 
 
 }
