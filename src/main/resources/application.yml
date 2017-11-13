@@ -21,3 +21,9 @@ wechat:
       keyPath:
 #微信支付异步通知地址
       notifyUrl: http://sell.natapp4.cc/sell/pay.notify
+
+
+logging:
+  pattern:
+    console: "%d-%msg%n"
+  file: G:\xuwanying2\sell\sell.log
