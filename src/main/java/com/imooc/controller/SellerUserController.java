@@ -59,8 +59,9 @@ public class SellerUserController {
         CookieUtil.set(response, CookieConstant.TOKEN,token,CookieConstant.EXPIRE);
 
         return new ModelAndView("redirect:/seller/order/list");
-        //这是登陆状态存了一个token，下次判断是否登陆，则从cookie中获取token值，再从缓存中获取到openid，
+        //这是登陆状态存了一个token，(登陆之前是没有token的，再登陆时才生成token)下次判断是否登陆，则从cookie中获取token值，再从缓存中获取到openid，
         //表示该用户已经登陆
+        //并且每次跳转到页面时总要验证是否有token，没有token证明没有登陆，则跳到登陆页面
     }
 
 

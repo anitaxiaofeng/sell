@@ -1,5 +1,7 @@
 package com.imooc.dataobject;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.imooc.utils.serializer.Date2LongSerializer;
 import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -7,6 +9,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Date;
 
 /**
  * 类目
@@ -28,6 +31,12 @@ public class ProductCategory {
 
     /** 类目编号. */
     private Integer categoryType;
+
+    @JsonSerialize(using = Date2LongSerializer.class)
+    private Date createTime;
+
+    @JsonSerialize(using = Date2LongSerializer.class)
+    private Date updateTime;
 
     public ProductCategory() {
     }

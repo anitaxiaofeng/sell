@@ -32,7 +32,7 @@ public class SellerOrderController {
 
     @GetMapping("/list")
     public ModelAndView list(@RequestParam(value = "page",defaultValue = "1")Integer page,
-                             @RequestParam(value = "size",defaultValue = "3")Integer size,
+                             @RequestParam(value = "size",defaultValue = "10")Integer size,
                              Map<String,Object> map){
         PageRequest pageRequest = new PageRequest(page-1,size);  //传进来的page是从第1页开始，而PageRequest是从0开始
         Page<OrderDTO> orderDTOPage = orderService.findList(pageRequest);
